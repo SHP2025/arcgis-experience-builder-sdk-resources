@@ -31,7 +31,7 @@ const { useState, useRef, useEffect } = React
 export default function ({
   useMapWidgetIds
 }: AllWidgetProps<unknown>) {
-  const apiWidgetContainer = useRef<HTMLDivElement>()
+  const apiWidgetContainer = useRef<HTMLDivElement>(undefined)
 
   const [layerInfo, setLayerInfo] = useState<ActiveLayerInfo>(null)
   const [jimuMapView, setJimuMapView] = useState<JimuMapView>(null)
@@ -65,6 +65,7 @@ export default function ({
         setLegendWidget(null)
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiWidgetContainer, jimuMapView])
 
   const onActiveViewChange = (jmv: JimuMapView) => {
